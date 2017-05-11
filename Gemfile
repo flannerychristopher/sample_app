@@ -52,6 +52,10 @@ group :test do
   gem 'guard-minitest'
 end
 
+group :development do
+  gem 'guard'
+end
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

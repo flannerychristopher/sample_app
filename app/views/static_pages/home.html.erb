@@ -1,16 +1,31 @@
 <% provide(:title, "Home") %>
 
-<div class="center jumbotron">
-  <h1>Home</h1>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class='micropost_form'>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
 
-  <h2>Lorem Ipsum</h2>
+  <div class="center jumbotron">
+    <h1>Home</h1>
+      <h2>Lorem Ipsum</h2>
+        <p>
+          Integer eu blandit velit, ac aliquam tellus. Nulla volutpat risus quis auctor facilisis. Duis id placerat quam. Phasellus sagittis, tellus eget mollis dignissim, nisi nisi semper libero, ac tincidunt tellus ipsum ut lorem. Curabitur fermentum est ex, vitae mollis dui pulvinar at. Nulla condimentum purus quis nisl feugiat, in congue leo cursus. Nulla et condimentum diam.
+        </p>
+        <%= link_to "Sign Up Now!", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
 
-  <p>Integer eu blandit velit, ac aliquam tellus. Nulla volutpat risus quis auctor facilisis. Duis id placerat quam. Phasellus sagittis, tellus eget mollis dignissim, nisi nisi semper libero, ac tincidunt tellus ipsum ut lorem. Curabitur fermentum est ex, vitae mollis dui pulvinar at. Nulla condimentum purus quis nisl feugiat, in congue leo cursus. Nulla et condimentum diam.</p>
+  <%= link_to image_tag("RubyOnRails.png", alt: "logo"), 'http://rubyonrails.org/' %>
 
-  <%= link_to "Sign Up Now!", signup_path, class: "btn btn-lg btn-primary" %>
-
-</div>
-
-
-
-  <%= link_to image_tag("ants.jpg", alt: "logo"), 'http://rubyonrails.org/' %>
+<% end %>
